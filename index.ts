@@ -48,9 +48,9 @@ const main = async () => {
     const address = event.topics[2];
 
     if (functionCall === RELY_FUNCTION_SIG) {
-      listOfWards.push(address);
+      listOfWards.push(`${address} added at block ${event.blockNumber}`);
     } else if (functionCall === DENY_FUNCTION_SIG) {
-      listOfWards = listOfWards.filter((item) => item != address);
+      listOfWards.push(`${address} removed at block ${event.blockNumber}`);
     } else {
       console.warn(`Invalid topic[0] detected`);
     }
